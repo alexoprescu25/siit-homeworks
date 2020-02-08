@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.site-navigation {
+    display: flex;
+    justify-content: center;
+}
+
+.submit {
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    background-color: rgb(2, 136, 136);
+}
+
+.error {
+    border: 1px solid rgb(192, 7, 7);
+}
+
+.success-message {
+    background-color: rgb(142, 247, 142);
+    color: green;
+
+    padding: 15px;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 1s;
+}

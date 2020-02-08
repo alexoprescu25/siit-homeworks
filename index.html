@@ -5,10 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="main.js" defer></script>
 </head>
 <body>
-
-
-<script src="main.js"></script>
+    <nav class="site-navigation">
+        <form action="">
+        <p><input type="text" name="firstname" id="vh" placeholder="First Name" class="js-required first"></p>
+        <p><input type="text" name="lastname" placeholder="Last Name" class="js-required"></p>
+        <p>
+            Gender:
+        </p>
+        <p>
+            <input type="radio" id="m" class="js-radio" name="radio">
+            <label for="m">M</label>
+            <br>
+            <input type="radio" id="f" class="js-radio" name="radio">
+            <label for="f">F</label>
+        </p>
+        <textarea cols="30" rows="10">Your message here...</textarea>
+        <br>
+        <button type="submit" class="submit js-submit">Submit</button>
+    </form>
+    <img src="images/contact-3.jpg" alt="img">
+    </nav>
 </body>
 </html>

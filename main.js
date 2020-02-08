@@ -1,53 +1,77 @@
-function display() {  
-    for(let i = 0; i <= 20; i++) {
-        console.log(i);
-    }
-    for(let j = 0; j <= 20; j++) {
-        if(j % 2) {
-            console.log(j);
-            
-        }
-    }
-}
+const reqField = document.querySelectorAll('.js-required');
+const radio = document.querySelectorAll('.js-radio');
+const first = document.querySelector('.first');
+document.querySelector('form').addEventListener('submit', submit);
 
-display();
 
-function sum() {
-    let arr = [1, 2, 3, 4, 5, 6, 7];
-    let str = 0;
-    for(let i = arr.length - 1; i >= 0; i-- ) {
-        str = str + arr[i];
-    }
-    console.log('Suma elementelor este: ', str);
-}
 
-sum();
+function submit(e) {
 
-function max() {
-    let arr = [20, 11, 43, 2, 18]
-    let max = -Infinity;
-    for(let i = arr.length - 1; i >= 0; i--) {
-    if(max < arr[i]) {
-        max = arr[i];
+
+    for(let i = 0; i < reqField.length; i++) {
+        const field  = reqField[i];
+    if(field.value === '') {
+        console.warn("Nu s-a completat campul!: ", field.name);
+        field.classList.add('error');
+        field.addEventListener('change',
+        () => {
+            field.classList.remove('error');
+        },
+        );
+        e.preventDefault();
     }
 }
-       
-    console.log('Maximul elementelor este: ', max);
-}
 
-max();
+    if(!radio[0].checked && !radio[1].checked) {
+        const parent = radio[0].parentElement;
 
- 
-function count() {
-    let arr = [1, 2, 1, 3, 25, 1, 4, 7];
-    let value = 1;
-    let nr = 0;
-    for(let i = 0; i < arr.length; i++) {
-        if(arr[i] == value) {
-            nr++;
-        }
+        console.warn("Nu s-a completat sexul!")
+        parent.classList.add('error');
+
+        parent.addEventListener('change',
+        () => {
+            parent.classList.remove('error');
+        },
+        );
     }
-    console.log('Numarul 1 apare de ' + nr + ' ori');
+    
+    const valoare = first.value;
+    console.log(valoare);
 }
 
-count();
+function showSuccessMessage() {
+    if(!document.location.search === '') {
+        return;
+    }
+
+    const p = document.createElement('p');
+    p.classList.add('success-message');
+
+    let x = window.location.search.substring(10).split("=");
+    x = x[1].split("&")[0];
+
+    p.innerHTML = 'Thank you for contacting us, ' + x;
+
+    // let x = document.location.search.substring(5).split("=");
+    // console.log(x[1].split("")[0]);
+
+    const form = document.querySelector('form');
+    form.prepend(p);
+
+    console.log('Success!');
+
+    setTimeout(hideSuccessMessage, 5000);
+
+}
+
+window.addEventListener('DOMContentLoaded', showSuccessMessage);
+window.addEventListener('DOMContentLoaded', console.log('DOM Loaded'));
+
+function hideSuccessMessage() {
+    document.querySelector('.success-message').classList.add('fade-out');
+}
+
+
+
+const buttonSubmit = document.querySelector('.js-submit');
+buttonSubmit.addEventListener('click', submit);
